@@ -14,24 +14,24 @@ export const signup = async (req, res) => {
   try {
     await user.save();
     res.status(201).json(user);
-    console.log(user);
+    // console.log(user);
   } catch (error) {
     res.status(409).json({
       error: error.message,
     });
-    console.log(error);
+    // console.log(error);
   }
 };
 export const login = async (req, res) => {
   // const password = await bcrypt.hash(req.body.password, 10);
-  console.log(req.body);
+  // console.log(req.body);
   const user = await User.findOne({
     email: req.body.email,
     // password: req.body.password,
   });
   if (user) {
-    console.log(user);
-    console.log(req.body.password);
+    // console.log(user);
+    // console.log(req.body.password);
     const passwordIsValid = await bcrypt.compare(
       req.body.password,
       user.password
@@ -46,7 +46,7 @@ export const login = async (req, res) => {
         },
         "secretadgjl13579"
       );
-      console.log(token);
+      // console.log(token);
 
       return res.status(201).json({ status: "ok", user: token });
     } else {
@@ -62,7 +62,7 @@ export const login = async (req, res) => {
 //
 
 export const adminSignup = async (req, res) => {
-  console.log("initiated");
+  // console.log("initiated");
   const password = await bcrypt.hash(req.body.password, 10);
   const user = new adminUser({
     fullname: req.body.fullname,
@@ -80,13 +80,13 @@ export const adminSignup = async (req, res) => {
 };
 export const adminLogin = async (req, res) => {
   // const password = await bcrypt.hash(req.body.password, 10);
-  console.log(req.body);
+  // console.log(req.body);
   const user = await adminUser.findOne({
     email: req.body.email,
     // password: req.body.password,
   });
   if (user) {
-    console.log(user);
+    // console.log(user);
     console.log(req.body.password);
     const passwordIsValid = await bcrypt.compare(
       req.body.password,
