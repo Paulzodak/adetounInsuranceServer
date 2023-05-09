@@ -87,7 +87,7 @@ export const adminLogin = async (req, res) => {
   });
   if (user) {
     // console.log(user);
-    console.log(req.body.password);
+    // console.log(req.body.password);
     const passwordIsValid = await bcrypt.compare(
       req.body.password,
       user.password
@@ -102,7 +102,7 @@ export const adminLogin = async (req, res) => {
         },
         "secretadgjl13579"
       );
-      console.log(token);
+      // console.log(token);
 
       return res.json({ status: "ok", user: token });
     }
