@@ -17,8 +17,8 @@ app.use("/api/auth", authRoutes);
 app.get("/api", (req, res) => {
   res.send("Welcome to server");
 });
-// const PORT = process.env.PORT || 5000;
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT
 mongoose
   .connect(
     `mongodb+srv://zodak:adetoun1234@cluster1.bes5zxp.mongodb.net/User-Data?retryWrites=true&w=majority`,
