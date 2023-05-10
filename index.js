@@ -8,7 +8,7 @@ dotenv.config();
 app.use(express.json({ extended: true }));
 app.use(express.json({ urlencoded: true }));
 const corsOptions = {
-  origin: "adetoun-insurance-server.vercel.app",
+  origin: "https://adetoun-insurance.vercel.app/",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
