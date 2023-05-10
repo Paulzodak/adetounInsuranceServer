@@ -11,7 +11,7 @@ export const signup = async (req, res) => {
     "Access-Control-Allow-Methods",
     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
   );
-  console.log("initiated");
+
   const password = await bcrypt.hash(req.body.password, 10);
   const user = new User({
     fullname: req.body.fullname,
@@ -21,12 +21,10 @@ export const signup = async (req, res) => {
   try {
     await user.save();
     res.status(201).json(user);
-    // console.log(user);
   } catch (error) {
     res.status(409).json({
       error: error.message,
     });
-    // console.log(error);
   }
 };
 export const login = async (req, res) => {
@@ -38,15 +36,11 @@ export const login = async (req, res) => {
     "Access-Control-Allow-Methods",
     "PUT, POST, GET, DELETE, PATCH, OPTIONS"
   );
-  // const password = await bcrypt.hash(req.body.password, 10);
-  // console.log(req.body);
+
   const user = await User.findOne({
     email: req.body.email,
-    // password: req.body.password,
   });
   if (user) {
-    // console.log(user);
-    // console.log(req.body.password);
     const passwordIsValid = await bcrypt.compare(
       req.body.password,
       user.password
@@ -61,7 +55,6 @@ export const login = async (req, res) => {
         },
         "secretadgjl13579"
       );
-      // console.log(token);
 
       return res.status(201).json({ status: "ok", user: token });
     } else {
@@ -70,7 +63,6 @@ export const login = async (req, res) => {
         .json({ status: "error", body: "password incorrect" });
     }
   } else {
-    // res.status(409).json({ message: "invalid" });
     return res.status(400).json({ status: "error", body: "Error" });
   }
 };
