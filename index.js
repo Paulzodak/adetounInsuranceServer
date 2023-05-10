@@ -12,8 +12,6 @@ app.use(express.json({ extended: true }));
 app.use(express.json({ urlencoded: true }));
 app.use(cors());
 app.use("/api/auth", authRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/product", productRoutes);
 app.get("/api", (req, res) => {
   res.send("Welcome to server");
 });
