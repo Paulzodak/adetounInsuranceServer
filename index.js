@@ -13,7 +13,6 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-
 app.use("/api/auth", authRoutes);
 app.get("/api", (req, res) => {
   res.send("Welcome to server");

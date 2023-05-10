@@ -4,6 +4,14 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import adminUser from "../models/adminUser.js";
 export const signup = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Max-Age", "1800");
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+  );
   console.log("initiated");
   const password = await bcrypt.hash(req.body.password, 10);
   const user = new User({
@@ -23,6 +31,14 @@ export const signup = async (req, res) => {
   }
 };
 export const login = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Max-Age", "1800");
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+  );
   // const password = await bcrypt.hash(req.body.password, 10);
   // console.log(req.body);
   const user = await User.findOne({
